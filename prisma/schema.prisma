@@ -10,7 +10,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Level {
+model Levels {
   id    Int  @id @default(autoincrement())
   level  String
 }
