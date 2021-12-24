@@ -1,4 +1,8 @@
-import { CreateLevelRequestDto, LevelResponseDto } from "@/domain/level/dto";
+import {
+  CreateLevelRequestDto,
+  UpdateLevelRequestDto,
+  LevelResponseDto,
+} from "@/domain/level/dto";
 import { ILevelRepository } from "@/domain/level/repositories/";
 import { PrismaClient } from "@prisma/client";
 
@@ -11,6 +15,25 @@ export class LevelRepositoryPrisma implements ILevelRepository {
 
   async create({ level }: CreateLevelRequestDto): Promise<LevelResponseDto> {
     return this.prismaClient.levels.create({
+      data: {
+        level,
+      },
+    });
+  }
+
+  findById(id: number): Promise<LevelResponseDto> {
+    return this.prismaClient.levels.findUnique({
+      where: {
+        id,
+      },
+    });
+  }
+
+  update({ id, level }: UpdateLevelRequestDto): Promise<LevelResponseDto> {
+    return this.prismaClient.levels.update({
+      where: {
+        id,
+      },
       data: {
         level,
       },
