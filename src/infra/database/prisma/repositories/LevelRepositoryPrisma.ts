@@ -43,4 +43,11 @@ export class LevelRepositoryPrisma implements ILevelRepository {
   findAll(): Promise<LevelResponseDto[]> {
     return this.prismaClient.levels.findMany();
   }
+  delete(id: number): Promise<void> {
+    return this.prismaClient.levels.delete({
+      where: {
+        id,
+      },
+    });
+  }
 }

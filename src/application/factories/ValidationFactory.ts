@@ -22,4 +22,12 @@ export class ValidationFactory {
     );
     return new ValidationComposite(validations);
   };
+
+  static deleteLevelValidation = (): ValidationComposite => {
+    const validations: IValidation[] = [];
+    validations.push(
+      new LevelFoundValidation("id", LevelRepositoryFactory.getInstance())
+    );
+    return new ValidationComposite(validations);
+  };
 }

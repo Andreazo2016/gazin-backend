@@ -1,4 +1,9 @@
-import { CreateLevel, UpdateLevel, ListLevel } from "@/domain/level/useCases";
+import {
+  CreateLevel,
+  UpdateLevel,
+  ListLevel,
+  DeleteLevel,
+} from "@/domain/level/useCases";
 import { LevelRepositoryFactory } from "./LevelRepositoryFactory";
 
 export class LevelFactory {
@@ -12,5 +17,8 @@ export class LevelFactory {
 
   static updateLevel(): UpdateLevel {
     return new UpdateLevel(LevelRepositoryFactory.getInstance());
+  }
+  static deleteLevel(): DeleteLevel {
+    return new DeleteLevel(LevelRepositoryFactory.getInstance());
   }
 }

@@ -9,4 +9,5 @@ export interface ILevelRepository {
   update(level: UpdateLevelRequestDto): Promise<LevelResponseDto>;
   findAll(): Promise<LevelResponseDto[]>;
   findById(id: number): Promise<LevelResponseDto>;
+  delete(id: number): Promise<void>;
 }

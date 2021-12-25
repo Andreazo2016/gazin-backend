@@ -2,13 +2,14 @@ import { IRoute } from "@/application/interfaces/IRoutes";
 import createLevelController from "@/application/controllers/level/create";
 import listLevelController from "@/application/controllers/level/list";
 import updateLevelController from "@/application/controllers/level/update";
+import deleteLevelController from "@/application/controllers/level/delete";
 import { Method } from "@/common/enums/http-methods";
 
 const routes: IRoute[] = [
   {
     method: Method.POST,
     path: "/levels",
-    description: "Create level",
+    description: "Create one level",
     middlewares: [],
     controller: createLevelController,
   },
@@ -25,6 +26,13 @@ const routes: IRoute[] = [
     description: "update one level",
     middlewares: [],
     controller: updateLevelController,
+  },
+  {
+    method: Method.DELETE,
+    path: "/levels/:id",
+    description: "Delete one level",
+    middlewares: [],
+    controller: deleteLevelController,
   },
 ];
 
