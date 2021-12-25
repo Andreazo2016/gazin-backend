@@ -1,3 +1,4 @@
+import { LevelDto } from "./levelDto";
 export interface DevelopResponseDto {
   id: number;
   levelId: number;
@@ -6,4 +7,5 @@ export interface DevelopResponseDto {
   dateOfBirth: Date;
   age: number;
   hobby: string;
+  level: LevelDto;
 }

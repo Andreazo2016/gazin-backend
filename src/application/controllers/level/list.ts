@@ -6,8 +6,8 @@ class ListLevelController implements IBaseController {
   async execute(_: any) {
     const ListLevelsService = LevelFactory.listLevel();
     try {
-      const users = await ListLevelsService.execute();
-      return ok(users);
+      const levels = await ListLevelsService.execute();
+      return ok(levels);
     } catch (error) {
       console.log(error);
       return serverError(error);

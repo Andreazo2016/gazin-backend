@@ -28,4 +28,11 @@ export class DevelopRepositoryPrisma implements DevelopRepository {
       },
     });
   }
+  findAll(): Promise<DevelopResponseDto[]> {
+    return this.prismaClient.develops.findMany({
+      include: {
+        nivel: true,
+      },
+    });
+  }
 }
