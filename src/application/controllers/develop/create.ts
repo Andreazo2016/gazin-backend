@@ -7,11 +7,7 @@ import {
   DevelopFactory,
   ValidationFactory,
 } from "@/application/factories/develop";
-import {
-  serverError,
-  noContent,
-  badRequest,
-} from "@/common/helpers/httpHelper";
+import { serverError, badRequest, created } from "@/common/helpers/httpHelper";
 
 class CreateDevelopController implements IBaseController {
   constructor(private validation: IValidation) {}
@@ -38,7 +34,7 @@ class CreateDevelopController implements IBaseController {
         age,
         hobby,
       });
-      return noContent();
+      return created();
     } catch (error) {
       console.log(error);
       return serverError(error);

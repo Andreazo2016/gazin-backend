@@ -3,7 +3,11 @@ import {
   DevelopFactory,
   ValidationFactory,
 } from "@/application/factories/develop";
-import { badRequest, ok, serverError } from "@/common/helpers/httpHelper";
+import {
+  badRequest,
+  serverError,
+  noContent,
+} from "@/common/helpers/httpHelper";
 import { IValidation } from "@/application/interfaces";
 
 class ListDevelopController implements IBaseController {
@@ -19,7 +23,7 @@ class ListDevelopController implements IBaseController {
         return badRequest(error);
       }
       await deleteDevelopsService.execute(parseInt(id));
-      return ok();
+      return noContent();
     } catch (error) {
       console.log(error);
       return serverError(error);
