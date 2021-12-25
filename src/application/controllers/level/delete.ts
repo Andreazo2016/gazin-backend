@@ -1,5 +1,5 @@
 import { IBaseController } from "@/application/interfaces/IBaseController";
-import { LevelFactory, ValidationFactory } from "@/application/factories";
+import { LevelFactory, ValidationFactory } from "@/application/factories/level";
 import {
   noContent,
   serverError,

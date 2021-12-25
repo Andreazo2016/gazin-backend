@@ -1,5 +1,5 @@
 import { IBaseController } from "@/application/interfaces/IBaseController";
-import { LevelFactory } from "@/application/factories";
+import { LevelFactory } from "@/application/factories/level";
 import { ok, serverError } from "@/common/helpers/httpHelper";
 
 class ListLevelController implements IBaseController {
