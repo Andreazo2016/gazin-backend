@@ -4,6 +4,7 @@ import {
   noContent,
   serverError,
   badRequest,
+  ok,
 } from "@/common/helpers/httpHelper";
 import { IValidation } from "@/application/interfaces";
 
@@ -18,7 +19,7 @@ class DeleteLevelController implements IBaseController {
         return badRequest(error);
       }
       await deleteLevelService.execute(parseInt(id));
-      return noContent();
+      return ok();
     } catch (error) {
       console.log(error);
       return serverError(error);

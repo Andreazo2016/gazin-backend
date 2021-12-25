@@ -17,7 +17,7 @@ class UpdateLevelController implements IBaseController {
         return badRequest(error);
       }
       await updateLevelService.execute({ id: parseInt(id), level });
-      return ok({});
+      return ok();
     } catch (error) {
       console.log(error);
       return serverError(error);
