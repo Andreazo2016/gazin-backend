@@ -1,4 +1,9 @@
-import { CreateDevelop, ListDevelop } from "@/domain/develop/useCases";
+import {
+  CreateDevelop,
+  ListDevelop,
+  DeleteDevelop,
+  UpdateDevelop,
+} from "@/domain/develop/useCases";
 import { DevelopRepositoryFactory } from "./DevelopRepositoryFactory";
 
 export class DevelopFactory {
@@ -7,5 +12,11 @@ export class DevelopFactory {
   }
   static listDevelop(): ListDevelop {
     return new ListDevelop(DevelopRepositoryFactory.getInstance());
+  }
+  static deleteDevelop(): DeleteDevelop {
+    return new DeleteDevelop(DevelopRepositoryFactory.getInstance());
+  }
+  static updateDevelop(): UpdateDevelop {
+    return new UpdateDevelop(DevelopRepositoryFactory.getInstance());
   }
 }

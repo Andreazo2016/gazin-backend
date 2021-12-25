@@ -1,10 +1,12 @@
 import {
   RequiredFieldValidation,
+  DevelopFoundValidation,
   LevelFoundValidation,
 } from "@/application/validators";
 import { IValidation } from "@/application/interfaces";
 import { ValidationComposite } from "@/application/validators";
 import { LevelRepositoryFactory } from "../level/LevelRepositoryFactory";
+import { DevelopRepositoryFactory } from "../develop/DevelopRepositoryFactory";
 
 export class ValidationFactory {
   static createDevelopValidation = (): ValidationComposite => {
@@ -17,6 +19,24 @@ export class ValidationFactory {
     validations.push(new RequiredFieldValidation("levelId"));
     validations.push(
       new LevelFoundValidation("levelId", LevelRepositoryFactory.getInstance())
+    );
+
+    return new ValidationComposite(validations);
+  };
+
+  static deleteDevelopValidation = (): ValidationComposite => {
+    const validations: IValidation[] = [];
+    validations.push(
+      new DevelopFoundValidation("id", DevelopRepositoryFactory.getInstance())
+    );
+
+    return new ValidationComposite(validations);
+  };
+
+  static updateDevelopValidation = (): ValidationComposite => {
+    const validations: IValidation[] = [];
+    validations.push(
+      new DevelopFoundValidation("id", DevelopRepositoryFactory.getInstance())
     );
 
     return new ValidationComposite(validations);

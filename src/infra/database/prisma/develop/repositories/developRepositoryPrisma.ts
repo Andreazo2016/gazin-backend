@@ -1,4 +1,8 @@
-import { CreateDevelopDto, DevelopResponseDto } from "@/domain/develop/dto";
+import {
+  CreateDevelopDto,
+  DevelopResponseDto,
+  UpdateDevelopRequestDto,
+} from "@/domain/develop/dto";
 import { DevelopRepository } from "@/domain/develop/repositories/developRepository";
 import { PrismaClient } from "@prisma/client";
 
@@ -32,6 +36,30 @@ export class DevelopRepositoryPrisma implements DevelopRepository {
     return this.prismaClient.develops.findMany({
       include: {
         nivel: true,
+      },
+    });
+  }
+  update({ id, ...params }: UpdateDevelopRequestDto): Promise<void> {
+    return this.prismaClient.develops.update({
+      where: {
+        id,
+      },
+      data: {
+        ...params,
+      },
+    });
+  }
+  findById(id: number): Promise<DevelopResponseDto> {
+    return this.prismaClient.develops.findUnique({
+      where: {
+        id,
+      },
+    });
+  }
+  delete(id: number): Promise<void> {
+    return this.prismaClient.develops.delete({
+      where: {
+        id,
       },
     });
   }
