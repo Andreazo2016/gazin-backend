@@ -14,7 +14,7 @@ export class FakeLevelRepository implements ILevelRepository {
   private levels: Level[] = [];
   async create({ level }: CreateLevelRequestDto): Promise<LevelResponseDto> {
     const userCreated = {
-      id: faker.datatype.number(),
+      id: faker.datatype.number(100),
       level,
     };
     this.levels.push(userCreated);

@@ -3,10 +3,7 @@ import { ILevelRepository } from "@/domain/level/repositories/ILevelRepository";
 
 export class UpdateLevel {
   constructor(private levelRepository: ILevelRepository) {}
-  async execute({
-    id,
-    level,
-  }: UpdateLevelRequestDto): Promise<LevelResponseDto> {
-    return this.levelRepository.update({ id, level });
+  async execute({ id, level }: UpdateLevelRequestDto): Promise<void> {
+    await this.levelRepository.update({ id, level });
   }
 }
