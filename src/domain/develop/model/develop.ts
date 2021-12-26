@@ -1,5 +1,5 @@
-import { LevelDto } from "./levelDto";
-export interface DevelopResponseDto {
+import { Level } from "@/domain/level/model/level";
+export interface Develop {
   id: number;
   levelId: number;
   name: string;
@@ -7,5 +7,5 @@ export interface DevelopResponseDto {
   dateOfBirth: Date;
   age: number;
   hobby: string;
-  level?: LevelDto;
+  level?: Level;
 }

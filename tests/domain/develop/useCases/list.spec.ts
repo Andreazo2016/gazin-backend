@@ -1,4 +1,4 @@
-import { describe, it, jest, expect } from "@jest/globals";
+import { describe, it, expect } from "@jest/globals";
 import faker from "faker";
 import { ListDevelop, CreateDevelop } from "@/domain/develop/useCases";
 import { FakeDevelopRepository } from "@/tests/domain/develop/fakeRepositories/fakeDevelopRepository";

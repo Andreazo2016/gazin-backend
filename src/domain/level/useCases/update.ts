@@ -1,4 +1,4 @@
-import { UpdateLevelRequestDto, LevelResponseDto } from "@/domain/level/dto";
+import { UpdateLevelRequestDto } from "@/domain/level/dto";
 import { ILevelRepository } from "@/domain/level/repositories/ILevelRepository";
 
 export class UpdateLevel {
