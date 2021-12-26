@@ -1,13 +1,14 @@
 import {
   CreateLevelRequestDto,
   UpdateLevelRequestDto,
-  LevelResponseDto,
 } from "@/domain/level/dto";
 
+import { Level } from "@/domain/level/model/level";
+
 export interface ILevelRepository {
-  create(level: CreateLevelRequestDto): Promise<LevelResponseDto>;
+  create(level: CreateLevelRequestDto): Promise<Level>;
   update(level: UpdateLevelRequestDto): Promise<void>;
-  findAll(): Promise<LevelResponseDto[]>;
-  findById(id: number): Promise<LevelResponseDto | null>;
+  findAll(): Promise<Level[]>;
+  findById(id: number): Promise<Level | null>;
   delete(id: number): Promise<void>;
 }

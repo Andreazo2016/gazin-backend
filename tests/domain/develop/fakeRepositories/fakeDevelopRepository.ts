@@ -8,17 +8,8 @@ import { Develop } from "@/domain/develop/model/develop";
 
 import { DevelopRepository } from "@/domain/develop/repositories/developRepository";
 
-interface DevelopModel {
-  id: number;
-  levelId: number;
-  name: string;
-  sex: string;
-  dateOfBirth: Date;
-  age: number;
-  hobby: string;
-}
 export class FakeDevelopRepository implements DevelopRepository {
-  private develops: DevelopModel[] = [];
+  private develops: Develop[] = [];
   async create({
     name,
     sex,

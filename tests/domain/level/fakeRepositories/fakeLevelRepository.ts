@@ -1,18 +1,14 @@
+import faker from "faker";
 import { ILevelRepository } from "@/domain/level/repositories";
 import {
   CreateLevelRequestDto,
-  LevelResponseDto,
   UpdateLevelRequestDto,
 } from "@/domain/level/dto";
-import faker from "faker";
+import { Level } from "@/domain/level/model/level";
 
-interface Level {
-  id: number;
-  level: string;
-}
 export class FakeLevelRepository implements ILevelRepository {
   private levels: Level[] = [];
-  async create({ level }: CreateLevelRequestDto): Promise<LevelResponseDto> {
+  async create({ level }: CreateLevelRequestDto): Promise<Level> {
     const userCreated = {
       id: faker.datatype.number(100),
       level,
@@ -29,10 +25,10 @@ export class FakeLevelRepository implements ILevelRepository {
       this.levels.push(levelData);
     }
   }
-  async findAll(): Promise<LevelResponseDto[]> {
+  async findAll(): Promise<Level[]> {
     return this.levels;
   }
-  async findById(id: number): Promise<LevelResponseDto | null> {
+  async findById(id: number): Promise<Level | null> {
     return this.levels.find((level) => level.id === id);
   }
 
