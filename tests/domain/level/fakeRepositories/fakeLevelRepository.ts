@@ -33,13 +33,10 @@ export class FakeLevelRepository implements ILevelRepository {
     return this.levels;
   }
   async findById(id: number): Promise<LevelResponseDto | null> {
-    return this.levels.find((user) => user.id === id);
+    return this.levels.find((level) => level.id === id);
   }
 
   async delete(id: number): Promise<void> {
-    const userFoundIndex = this.levels.findIndex((user) => user.id === id);
-    if (userFoundIndex) {
-      this.levels.splice(0, userFoundIndex);
-    }
+    this.levels = this.levels.filter((level) => level.id !== id);
   }
 }
