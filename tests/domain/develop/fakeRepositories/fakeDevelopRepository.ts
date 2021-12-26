@@ -1,12 +1,14 @@
 import faker from "faker";
 import {
   CreateDevelopDto,
-  DevelopResponseDto,
   UpdateDevelopRequestDto,
 } from "@/domain/develop/dto";
+
+import { Develop } from "@/domain/develop/model/develop";
+
 import { DevelopRepository } from "@/domain/develop/repositories/developRepository";
 
-interface Develop {
+interface DevelopModel {
   id: number;
   levelId: number;
   name: string;
@@ -16,7 +18,7 @@ interface Develop {
   hobby: string;
 }
 export class FakeDevelopRepository implements DevelopRepository {
-  private develops: Develop[] = [];
+  private develops: DevelopModel[] = [];
   async create({
     name,
     sex,
@@ -24,7 +26,7 @@ export class FakeDevelopRepository implements DevelopRepository {
     dateOfBirth,
     hobby,
     levelId,
-  }: CreateDevelopDto): Promise<DevelopResponseDto> {
+  }: CreateDevelopDto): Promise<Develop> {
     const develop = {
       id: faker.datatype.number(100),
       name,
@@ -37,7 +39,7 @@ export class FakeDevelopRepository implements DevelopRepository {
     this.develops.push(develop);
     return develop;
   }
-  async findAll(): Promise<DevelopResponseDto[]> {
+  async findAll(): Promise<Develop[]> {
     return this.develops;
   }
   async update({ id, ...params }: UpdateDevelopRequestDto): Promise<void> {
@@ -48,7 +50,7 @@ export class FakeDevelopRepository implements DevelopRepository {
       this.develops.push(newDevelop);
     }
   }
-  async findById(id: number): Promise<DevelopResponseDto> {
+  async findById(id: number): Promise<Develop> {
     return this.develops.find((develop) => develop.id === id);
   }
   async delete(id: number): Promise<void> {
