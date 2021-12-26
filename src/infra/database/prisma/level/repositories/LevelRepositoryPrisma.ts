@@ -29,7 +29,7 @@ export class LevelRepositoryPrisma implements ILevelRepository {
     });
   }
 
-  update({ id, level }: UpdateLevelRequestDto): Promise<LevelResponseDto> {
+  update({ id, level }: UpdateLevelRequestDto): Promise<void> {
     return this.prismaClient.levels.update({
       where: {
         id,

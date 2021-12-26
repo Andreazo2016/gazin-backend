@@ -13,4 +13,16 @@ datasource db {
 model Levels {
   id    Int  @id @default(autoincrement())
   level  String
+  Develops  Develops[]
+}
+
+model Develops {
+  id    Int  @id @default(autoincrement())
+  nivel  Levels   @relation(fields: [levelId], references: [id])
+  levelId Int
+  name String
+  sex  String
+  dateOfBirth DateTime
+  age Int
+  hobby String
 }

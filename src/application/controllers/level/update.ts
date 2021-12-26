@@ -3,7 +3,7 @@ import {
   HttpResponse,
   IValidation,
 } from "@/application/interfaces";
-import { ValidationFactory, LevelFactory } from "@/application/factories";
+import { ValidationFactory, LevelFactory } from "@/application/factories/level";
 import { serverError, ok, badRequest } from "@/common/helpers/httpHelper";
 
 class UpdateLevelController implements IBaseController {

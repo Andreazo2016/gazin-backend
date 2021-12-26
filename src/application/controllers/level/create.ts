@@ -3,12 +3,8 @@ import {
   HttpResponse,
   IValidation,
 } from "@/application/interfaces";
-import { ValidationFactory, LevelFactory } from "@/application/factories";
-import {
-  serverError,
-  noContent,
-  badRequest,
-} from "@/common/helpers/httpHelper";
+import { ValidationFactory, LevelFactory } from "@/application/factories/level";
+import { serverError, badRequest, created } from "@/common/helpers/httpHelper";
 
 class CreateLevelController implements IBaseController {
   constructor(private validation: IValidation) {}
@@ -21,7 +17,7 @@ class CreateLevelController implements IBaseController {
         return badRequest(error);
       }
       await createLevelService.execute({ level });
-      return noContent();
+      return created();
     } catch (error) {
       console.log(error);
       return serverError(error);

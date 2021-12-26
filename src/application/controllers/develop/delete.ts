@@ -1,23 +1,28 @@
 import { IBaseController } from "@/application/interfaces/IBaseController";
-import { LevelFactory, ValidationFactory } from "@/application/factories/level";
 import {
-  noContent,
-  serverError,
+  DevelopFactory,
+  ValidationFactory,
+} from "@/application/factories/develop";
+import {
   badRequest,
+  serverError,
+  noContent,
 } from "@/common/helpers/httpHelper";
 import { IValidation } from "@/application/interfaces";
 
-class DeleteLevelController implements IBaseController {
+class ListDevelopController implements IBaseController {
   constructor(private validation: IValidation) {}
   async execute(request: any) {
+    const deleteDevelopsService = DevelopFactory.deleteDevelop();
     const { id } = request;
-    const deleteLevelService = LevelFactory.deleteLevel();
     try {
-      const error = await this.validation.validate({ id: parseInt(id) });
+      const error = await this.validation.validate({
+        id: parseInt(id),
+      });
       if (error) {
         return badRequest(error);
       }
-      await deleteLevelService.execute(parseInt(id));
+      await deleteDevelopsService.execute(parseInt(id));
       return noContent();
     } catch (error) {
       console.log(error);
@@ -26,6 +31,6 @@ class DeleteLevelController implements IBaseController {
   }
 }
 
-export default new DeleteLevelController(
-  ValidationFactory.deleteLevelValidation()
+export default new ListDevelopController(
+  ValidationFactory.deleteDevelopValidation()
 );
