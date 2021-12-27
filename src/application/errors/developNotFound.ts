@@ -1,6 +1,6 @@
-export class DevelopNotFound extends Error {
+import { IErrorApp } from "@/application/interfaces";
+export class DevelopNotFound extends IErrorApp {
   constructor() {
-    super("Develop not found");
-    this.name = "DevelopNotFoundError";
+    super("Develop not found", "DevelopNotFoundError", 404);
   }
 }

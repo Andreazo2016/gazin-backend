@@ -1,11 +1,10 @@
 import {
   CreateDevelopDto,
-  DevelopResponseDto,
   UpdateDevelopRequestDto,
 } from "@/domain/develop/dto";
-import { DevelopRepository } from "@/domain/develop/repositories/developRepository";
+import { DevelopRepository } from "@/domain/develop/repositories/IDevelopRepository";
 import { PrismaClient } from "@prisma/client";
-
+import { Develop } from "@/domain/develop/model/develop";
 export class DevelopRepositoryPrisma implements DevelopRepository {
   private prismaClient;
 
@@ -20,7 +19,7 @@ export class DevelopRepositoryPrisma implements DevelopRepository {
     dateOfBirth,
     hobby,
     levelId,
-  }: CreateDevelopDto): Promise<DevelopResponseDto> {
+  }: CreateDevelopDto): Promise<Develop> {
     return this.prismaClient.develops.create({
       data: {
         name,
@@ -32,7 +31,7 @@ export class DevelopRepositoryPrisma implements DevelopRepository {
       },
     });
   }
-  findAll(): Promise<DevelopResponseDto[]> {
+  findAll(): Promise<Develop[]> {
     return this.prismaClient.develops.findMany({
       include: {
         nivel: true,
@@ -49,7 +48,7 @@ export class DevelopRepositoryPrisma implements DevelopRepository {
       },
     });
   }
-  findById(id: number): Promise<DevelopResponseDto> {
+  findById(id: number): Promise<Develop> {
     return this.prismaClient.develops.findUnique({
       where: {
         id,
@@ -60,6 +59,13 @@ export class DevelopRepositoryPrisma implements DevelopRepository {
     return this.prismaClient.develops.delete({
       where: {
         id,
+      },
+    });
+  }
+  findDevelopsByLevelId(id: number): Promise<Develop[]> {
+    return this.prismaClient.develops.findMany({
+      where: {
+        levelId: id,
       },
     });
   }
