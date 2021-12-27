@@ -4,8 +4,8 @@ import { ValidationFactory } from "@/tests/application/factories/ValidationFacto
 import { LevelNotFound } from "@/application/errors";
 import { FakeLevelRepository } from "@/tests/domain/level/fakeRepositories/fakeLevelRepository";
 
-describe("User Not Found Validation", () => {
-  it("should be able to return error if level does not exists", async () => {
+describe("Level Not Found Validation", () => {
+  it("should be able to return an error if level does not exists", async () => {
     const level = {
       id: -1,
     };

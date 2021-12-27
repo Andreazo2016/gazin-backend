@@ -6,7 +6,7 @@ import {
 
 import { Develop } from "@/domain/develop/model/develop";
 
-import { DevelopRepository } from "@/domain/develop/repositories/developRepository";
+import { DevelopRepository } from "@/domain/develop/repositories/IDevelopRepository";
 
 export class FakeDevelopRepository implements DevelopRepository {
   private develops: Develop[] = [];
@@ -46,5 +46,8 @@ export class FakeDevelopRepository implements DevelopRepository {
   }
   async delete(id: number): Promise<void> {
     this.develops = this.develops.filter((develop) => develop.id !== id);
+  }
+  async findDevelopsByLevelId(id: number): Promise<Develop[]> {
+    return this.develops.filter((develop) => develop.levelId === id);
   }
 }

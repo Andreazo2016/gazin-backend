@@ -1,5 +1,5 @@
 import { CreateDevelopDto } from "@/domain/develop/dto";
-import { DevelopRepository } from "@/domain/develop/repositories/developRepository";
+import { DevelopRepository } from "@/domain/develop/repositories/IDevelopRepository";
 import { Develop } from "@/domain/develop/model/develop";
 
 export class CreateDevelop {

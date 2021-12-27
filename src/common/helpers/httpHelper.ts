@@ -1,13 +1,14 @@
 import { HttpResponse } from "@/application/interfaces/HttpResponse";
 import { ServerError } from "../errors";
+import { IErrorApp } from "@/application/interfaces/IErrorApp";
 
-export const badRequest = (error: Error): HttpResponse => ({
-  statusCode: 400,
+export const badRequest = (error: IErrorApp): HttpResponse => ({
+  statusCode: error.statusCode || 400,
   body: error,
 });
 
-export const serverError = (error: Error): HttpResponse => ({
-  statusCode: 500,
+export const serverError = (error: IErrorApp): HttpResponse => ({
+  statusCode: error.statusCode || 500,
   body: new ServerError(error.stack),
 });
 

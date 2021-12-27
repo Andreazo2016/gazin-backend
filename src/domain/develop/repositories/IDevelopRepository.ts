@@ -11,4 +11,5 @@ export interface DevelopRepository {
   delete(id: number): Promise<void>;
   findById(id: number): Promise<Develop>;
   update(develop: UpdateDevelopRequestDto): Promise<void>;
+  findDevelopsByLevelId(id: number): Promise<Develop[]>;
 }
