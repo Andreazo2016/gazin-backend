@@ -34,7 +34,7 @@ export class DevelopRepositoryPrisma implements DevelopRepository {
   findAll(): Promise<Develop[]> {
     return this.prismaClient.develops.findMany({
       include: {
-        nivel: true,
+        level: true,
       },
     });
   }
