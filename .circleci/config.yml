@@ -1,0 +1,61 @@
+version: 2.1
+
+orbs:
+  heroku: circleci/heroku@1.0.1
+
+# Define the jobs we want to run for this project
+jobs:
+  build:
+    docker:
+      - image: circleci/node:14.16.0
+
+    steps:
+      - checkout
+
+      - run:
+          name: Install dependencies
+          command: npm install
+      # Save all project in the cache to be used by others jobs
+      - persist_to_workspace:
+          root: .
+          paths:
+            - "*"
+
+  unit_testing:
+    docker:
+      - image: circleci/node:14.16.0
+    steps:
+      # attach this job to use shared workplace
+      - attach_workspace:
+          at: .
+
+      - run:
+          name: Running unit testing
+          command: npm run test
+  deploy:
+    executor: heroku/default
+    steps:
+      - checkout
+      - heroku/install
+      - run:
+          command: >
+            echo "The command above installs Heroku, the command below deploys.
+            What you do inbetween is up to you!"
+      - heroku/deploy-via-git
+
+# Orchestrate our job run sequence
+workflows:
+  pipeline:
+    jobs:
+      - build:
+          filters:
+            branches:
+              only:
+                - master
+
+      - unit_testing:
+          requires:
+            - build
+      - deploy:
+          requires:
+            - unit_testing
