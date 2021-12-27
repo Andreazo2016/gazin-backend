@@ -32,7 +32,7 @@ export class ValidationFactory {
     );
     validations.push(
       new DeleteLevelWithDevelopValidation(
-        "levelId",
+        "id",
         DevelopRepositoryFactory.getInstance()
       )
     );
