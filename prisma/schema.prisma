@@ -18,7 +18,7 @@ model Levels {
 
 model Develops {
   id    Int  @id @default(autoincrement())
-  nivel  Levels   @relation(fields: [levelId], references: [id])
+  level  Levels   @relation(fields: [levelId], references: [id])
   levelId Int
   name String
   sex  String
