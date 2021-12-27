@@ -195,7 +195,7 @@ Request body:
 
 # Teste
 
-[Jest](https://jestjs.io/) foi a escolha para os testes no projeto
+[Jest](https://jestjs.io/) foi a escolha para uso no projeto
 
 ```
 $ yarn test ou npm run test
