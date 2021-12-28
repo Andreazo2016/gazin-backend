@@ -198,5 +198,11 @@ Request body:
 [Jest](https://jestjs.io/) foi a escolha para uso no projeto
 
 ```
-$ yarn test ou npm run test
+$ yarn test
+```
+
+Ou
+
+```
+$ npm run test
 ```
