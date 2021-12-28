@@ -1,5 +1,30 @@
 # GAZIN BACKEND DESAFIO
 
+# Itens desenvolvidos no projeto do desafio
+
+| ITENS
+| ----- |
+Listar níveis existentes
+Cadastrar um nível
+Editar um nível
+Remover um nível
+Listar desenvolvedores existentes
+Cadastrar um desenvolvedor
+Editar um desenvolvedor
+Remover um desenvolvedor
+Impedir que um nível seja removido quando houver um (ou mais) desenvolvedor(es) associado a este
+Validações de campos
+Tipagem de dados
+Organização e estrutura de pastas
+Conceitos e boas práticas de programação
+Reaproveitamento de código
+Clean Code
+Clean Architecture
+Testes Unitários / Feature
+Documentação de código/endpoint
+Disponibilização do backend via Docker
+Disponibilização/Publicação do sistema em uma aplicação online (Ex. Heroku)
+
 # Tecnologias do projeto
 
 - Node.js ^14.18.2
@@ -22,10 +47,18 @@ Usando npm:
 $ npm install
 ```
 
-## Link da API
+## URL API
+
+Desenvolvimento
 
 ```
 http://localhost:3000
+```
+
+Heroku
+
+```
+https://gazin-backend.herokuapp.com
 ```
 
 ## Configuração
@@ -43,19 +76,37 @@ Configuração de variáveis de ambientes que são utilizadas no projeto.
 Para iniciar aplicação em modo de desenvolvimento
 
 ```
-$ yarn dev ou npm run dev
+$ yarn dev
+```
+
+Ou
+
+```
+$  npm run dev
 ```
 
 Para fazer o build da aplicação
 
 ```
-$ yarn build ou npm run build
+$ yarn build
+```
+
+Ou
+
+```
+$ npm run build
 ```
 
 Para iniciar aplicação em modo produção
 
 ```
-$ yarn start ou npm run start
+$ yarn start
+```
+
+Ou
+
+```
+$ npm run start
 ```
 
 ## Manipulação de erro
